@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
         primarySwatch: Colors.blue,
+        
       ),
       home: StartUp(),
     );

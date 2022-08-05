@@ -14,7 +14,7 @@ class Buy extends StatefulWidget {
 
 class _BuyState extends State<Buy> with TickerProviderStateMixin  {
 
-  late TabController tabController;
+  TabController tabController;
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -28,6 +28,9 @@ class _BuyState extends State<Buy> with TickerProviderStateMixin  {
     tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
+
+int text = 1;
+
 
 
   @override
@@ -248,15 +251,34 @@ class _BuyState extends State<Buy> with TickerProviderStateMixin  {
                      Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(Icons.remove_circle_outline, color: Color(0xff000000),),
+                        
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              if(text > 1)
+                              {text = text - 1;}
+                              else{
+                                text = text;
+                              }
+                            });
+                          },
+                          child: Icon(Icons.remove_circle_outline, color: Color(0xff000000),)
+                        ),
                          SizedBox(width:20),
-                        Text('1',style: TextStyle(
+                        Text(text.toString(),style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize:20 
                           ),),
                         SizedBox(width:20),
-                        Icon(Icons.add_circle_outline, color: Color(0xff000000),),
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              text = text + 1;
+                            });
+                          },
+                          child: Icon(Icons.add_circle_outline, color: Color(0xff000000),)
+                          ),
                       ],
                      ),
                      

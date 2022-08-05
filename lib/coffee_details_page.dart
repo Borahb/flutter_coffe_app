@@ -1,9 +1,46 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_coffeeapp/buy_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:readmore/readmore.dart';
 
-class CoffeeDetailsPage extends StatelessWidget {
+class CoffeeDetailsPage extends StatefulWidget {
+
+
+
+  const CoffeeDetailsPage({Key key}) : super(key: key);
+
+  @override
+  State<CoffeeDetailsPage> createState() => _CoffeeDetailsPageState();
+}
+
+
+class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> with TickerProviderStateMixin  {
+
+
+  TabController tabController;
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    tabController = TabController(length: 3, vsync: this);
+    super.initState();
+  }
+
+  List<String> items = [
+    "S",
+    "M",
+    "L",
+  ];
+
+  int current = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +132,7 @@ class CoffeeDetailsPage extends StatelessWidget {
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
+                                  fontWeight: FontWeight.bold
                                 ),
                               ),
                               SizedBox(
@@ -132,19 +170,17 @@ class CoffeeDetailsPage extends StatelessWidget {
                         SizedBox(
                           height: 15,
                         ),
-                        RichText(
-                          text:
-                         TextSpan(
-                        text:  "A cappuccino is an approximately 150ml beverage, with 25 ml of espresso coffee and 85 ml of fresh milk the fo....",
+                        ReadMoreText(
+                        'A cappuccino is an approximately 150 ml (5 oz) beverage, with 25 ml of espresso coffee and 85ml of fresh milk the foaming action creates the additional volume. Great cappuccino is a delight available to discerning coffee lovers, right in their own kitchens.  It takes some practice with water, steam and foam, along with the right equipment on your countertop.  You’ll want an espresso machine with a built-in steaming wand. And of course, illy coffee on hand as your foundation.',
+                        trimLines: 3,
+                        colorClickableText: Colors.orange,
+                        trimMode: TrimMode.Line,
+                        trimCollapsedText: 'Read more',
+                        trimExpandedText: 'Read less',
+                        moreStyle: TextStyle(fontSize: 15, color: Colors.orange ),
                         style: TextStyle(color: Color(0xff948585), fontSize: 15),
-                        children:[
-                          TextSpan(text: "Read More",style: TextStyle(color: Color(0xffD36E2F), fontSize: 15, fontWeight: FontWeight.bold))
-                        ]
-                        
-                        
                         ),
-                        
-                        ),
+
                         SizedBox(
                           height: 15,
                         ),
@@ -158,65 +194,62 @@ class CoffeeDetailsPage extends StatelessWidget {
                         SizedBox(
                           height: 15,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              height: 37,
-                              width: 100,
-                              child: Center(
-                                  child: Text(
-                                    "S",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        ),
-                                  )),
+
+        SizedBox(
+          width: double.infinity,
+          height: 60,
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: items.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (ctx,index) {
+              return Column(
+                children: [
+                   GestureDetector(
+        
+                            onTap: () {
+                              setState(() {
+                                current = index;
+                              });
+                            },
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 200),
+                              margin: const EdgeInsets.all(5),
+                              width: 80,
+                              height: 45,
                               decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black)
-                                  ),
-                            ),
-                            
-                            Container(
-                              height: 37,
-                              width: 100,
+                                color: current == index
+                                    ? Colors.orange[50]
+                                    : Colors.white54,
+                                borderRadius: current == index
+                                    ? BorderRadius.circular(10)
+                                    : BorderRadius.circular(10),
+                                border: current == index
+                                    ? Border.all(
+                                        color: Colors.orange, width: 1)
+                                    : Border.all(
+                                        color: Colors.black, width: 1),
+                              ),
                               child: Center(
-                                  child: Text(
-                                    "M",
-                                    style: TextStyle(
-                                        color: Colors.orange,
-                                        fontSize: 18,
-                                        ),
-                                  )),
-                              decoration: BoxDecoration(
-                                  color: Colors.orange[50],
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Colors.orange)
-                                  ),
-                                  
+                                child: Text(
+                                  items[index],
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: current == index
+                                          ? Colors.orange
+                                          : Colors.black),
+                                ),
+                              ),
                             ),
-                            
-                            Container(
-                              height: 37,
-                              width: 100,
-                              child: Center(
-                                  child: Text(
-                                    "L",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        ),
-                                  )),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(8),
-                                   border: Border.all(color: Colors.black)
-                                  ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ]
+                
+              );
+            }
+            ),
+        ),
+                        
+                       
                         SizedBox(
                           height: 27,
                         ),

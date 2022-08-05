@@ -1,17 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_coffeeapp/coffee_card.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'coffee_details_page.dart';
+import 'package:flutter_coffeeapp/CoffeeTabScreens/tab1.dart';
+import 'package:flutter_coffeeapp/CoffeeTabScreens/tab2.dart';
+import 'package:flutter_coffeeapp/CoffeeTabScreens/tab3.dart';
+import 'package:flutter_coffeeapp/CoffeeTabScreens/tab4.dart';
+
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  late TabController tabController;
+  TabController tabController;
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -78,453 +81,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       height: 20,
                     ),
                   
-                  Row(
-                    children: [
-                      InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
-                      },
-                      
-                        child: Container(
-                          height: 250,
-                          width: 160,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: Colors.white
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                height: 125,
-                                width:130,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: AssetImage('images/2.jpg'),
-                                    fit: BoxFit.fill
-                                  )
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                    SvgPicture.asset(
-                                        "images/star.svg",
-                                        height: 13,
-                                        color: Color(0xffFBBE21),
-                                      ),
-                                    SizedBox(
-                                        width: 10,
-                                      ),
-                                    Text(
-                                        "4.8",
-                                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 13),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Cappuccino",
-                                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        height: 3,
-                                      ),
-                                      Text(
-                                        'with Chocolate',
-                                        style: TextStyle(
-                                            color: Color(0xff919293), fontSize: 11),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                r'Rs ',
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20),
-                                              ),
-                                              Text(
-                                                "180",
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.bold),
-                                              )
-                                            ],
-                                          ),
-                                          Container(
-                                              height: 30,
-                                              width: 30,
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xffd17842),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10)),
-                                              child: Icon(
-                                                Icons.add,
-                                                color: Colors.white,
-                                                size: 20,
-                                              ))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                              )
-                            ],
-                          )
-                        ),
-                      ),
-                      InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
-                        },
-                        child: Container(
-                          height: 250,
-                          width: 160,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: Colors.white
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                height: 125,
-                                width:130,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: AssetImage('images/3_1.jpg'),
-                                    fit: BoxFit.fill
-                                  )
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                    SvgPicture.asset(
-                                        "images/star.svg",
-                                        height: 13,
-                                        color: Color(0xffFBBE21),
-                                      ),
-                                    SizedBox(
-                                        width: 10,
-                                      ),
-                                    Text(
-                                        "4.9",
-                                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 13),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Cappuccino",
-                                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        height: 3,
-                                      ),
-                                      Text(
-                                        'with Oat Milk',
-                                        style: TextStyle(
-                                            color: Color(0xff919293), fontSize: 11),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                r'Rs ',
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20),
-                                              ),
-                                              Text(
-                                                "120",
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.bold),
-                                              )
-                                            ],
-                                          ),
-                                          Container(
-                                              height: 30,
-                                              width: 30,
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xffd17842),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10)),
-                                              child: Icon(
-                                                Icons.add,
-                                                color: Colors.white,
-                                                size: 20,
-                                              ))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                              )
-                            ],
-                          )
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
-                      },
-                      
-                        child: Container(
-                          height: 250,
-                          width: 160,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: Colors.white
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                height: 125,
-                                width:130,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: AssetImage('images/2.jpg'),
-                                    fit: BoxFit.fill
-                                  )
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                    SvgPicture.asset(
-                                        "images/star.svg",
-                                        height: 13,
-                                        color: Color(0xffFBBE21),
-                                      ),
-                                    SizedBox(
-                                        width: 10,
-                                      ),
-                                    Text(
-                                        "4.8",
-                                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 13),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Cappuccino",
-                                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        height: 3,
-                                      ),
-                                      Text(
-                                        'with Chocolate',
-                                        style: TextStyle(
-                                            color: Color(0xff919293), fontSize: 11),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                r'Rs ',
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20),
-                                              ),
-                                              Text(
-                                                "180",
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.bold),
-                                              )
-                                            ],
-                                          ),
-                                          Container(
-                                              height: 30,
-                                              width: 30,
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xffd17842),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10)),
-                                              child: Icon(
-                                                Icons.add,
-                                                color: Colors.white,
-                                                size: 20,
-                                              ))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                              )
-                            ],
-                          )
-                        ),
-                      ),
-                      InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
-                        },
-                        child: Container(
-                          height: 250,
-                          width: 160,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: Colors.white
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                height: 125,
-                                width:130,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                    image: AssetImage('images/3_1.jpg'),
-                                    fit: BoxFit.fill
-                                  )
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                    SvgPicture.asset(
-                                        "images/star.svg",
-                                        height: 13,
-                                        color: Color(0xffFBBE21),
-                                      ),
-                                    SizedBox(
-                                        width: 10,
-                                      ),
-                                    Text(
-                                        "4.9",
-                                        style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 13),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Cappuccino",
-                                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        height: 3,
-                                      ),
-                                      Text(
-                                        'with Oat Milk',
-                                        style: TextStyle(
-                                            color: Color(0xff919293), fontSize: 11),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                r'Rs ',
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20),
-                                              ),
-                                              Text(
-                                                "120",
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.bold),
-                                              )
-                                            ],
-                                          ),
-                                          Container(
-                                              height: 30,
-                                              width: 30,
-                                              decoration: BoxDecoration(
-                                                  color: Color(0xffd17842),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10)),
-                                              child: Icon(
-                                                Icons.add,
-                                                color: Colors.white,
-                                                size: 20,
-                                              ))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                              )
-                            ],
-                          )
-                        ),
-                      ),
-                    ],
-                  )
-                  
+                  Expanded(
+                    child: TabBarView(
+                      controller: tabController,
+                      children: [
+                        Tab1(),
+                        Tab2(),
+                        Tab3(),
+                        Tab4()
+                      ],
+                    ),
+                  ),                 
                 ],
               ),
             ),
@@ -563,8 +130,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         ),
 
                       Container(
-                        height: 40,
-                        width: 40,
+                        height: 50,
+                        width: 50,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           image: DecorationImage(
@@ -680,7 +247,5 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 }
-
-
 
 
